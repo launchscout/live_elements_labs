@@ -18,6 +18,12 @@ defmodule LiveElementsLabsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/students", StudentLive.Index, :index
+    live "/students/new", StudentLive.Index, :new
+    live "/students/:id/edit", StudentLive.Index, :edit
+
+    live "/students/:id", StudentLive.Show, :show
+    live "/students/:id/show/edit", StudentLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
