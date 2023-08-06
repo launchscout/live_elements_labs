@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@carbon/web-components": "^1.30.0",
+    "phoenix-custom-event-hook": "^0.0.6"
+  }
+}

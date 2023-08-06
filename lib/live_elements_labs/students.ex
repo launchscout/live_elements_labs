@@ -21,6 +21,10 @@ defmodule LiveElementsLabs.Students do
     Repo.all(Student)
   end
 
+  def list_students(sort) do
+    (from s in Student, order_by: ^sort) |> Repo.all()
+  end
+
   @doc """
   Gets a single student.
 

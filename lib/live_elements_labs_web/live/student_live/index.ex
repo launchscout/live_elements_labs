@@ -4,9 +4,14 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
   alias LiveElementsLabs.Students
   alias LiveElementsLabs.Students.Student
 
+  use LiveElements.CustomElementsHelpers
+  custom_element :bx_data_table, events: ["bx-table-header-cell-sort"]
+
+  @default_sort [asc: :last_name]
+
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :students, Students.list_students())}
+    {:ok, socket |> assign(:students, Students.list_students()) |> assign(:sort, @default_sort)}
   end
 
   @impl true
@@ -34,7 +39,7 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
 
   @impl true
   def handle_info({LiveElementsLabsWeb.StudentLive.FormComponent, {:saved, student}}, socket) do
-    {:noreply, stream_insert(socket, :students, student)}
+    {:noreply, assign(socket, :students, Students.list_students())}
   end
 
   @impl true
@@ -42,6 +47,8 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
     student = Students.get_student!(id)
     {:ok, _} = Students.delete_student(student)
 
-    {:noreply, stream_delete(socket, :students, student)}
+    {:noreply, assign(socket, :students, Students.list_students())}
   end
+
+  def sort_direction(_, _), do: "none"
 end

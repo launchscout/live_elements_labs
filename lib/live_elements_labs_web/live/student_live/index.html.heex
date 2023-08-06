@@ -7,29 +7,26 @@
   </:actions>
 </.header>
 
-<.table
-  id="students"
-  rows={@streams.students}
-  row_click={fn {_id, student} -> JS.navigate(~p"/students/#{student}") end}
->
-  <:col :let={{_id, student}} label="First name"><%= student.first_name %></:col>
-  <:col :let={{_id, student}} label="Last name"><%= student.last_name %></:col>
-  <:col :let={{_id, student}} label="Email"><%= student.email %></:col>
-  <:action :let={{_id, student}}>
-    <div class="sr-only">
-      <.link navigate={~p"/students/#{student}"}>Show</.link>
-    </div>
-    <.link patch={~p"/students/#{student}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, student}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: student.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
+<.bx_data_table id="datable">
+  <bx-table>
+    <bx-table-head>
+      <bx-table-header-row>
+        <bx-table-header-cell sort-direction="none" data-column-id="email">Email</bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("first_name", @sort)} data-column-id="first_name">First Name</bx-table-header-cell>
+        <bx-table-header-cell sort-direction="none" data-column-id="last_name">Last Name</bx-table-header-cell>
+      </bx-table-header-row>
+    </bx-table-head>
+    <bx-table-body>
+      <%= for student <- @students do %>
+      <bx-table-row>
+        <bx-table-cell><%= student.email %></bx-table-cell>
+        <bx-table-cell><%= student.first_name %></bx-table-cell>
+        <bx-table-cell><%= student.last_name %></bx-table-cell>
+      </bx-table-row>
+      <% end %>
+    </bx-table-body>
+  </bx-table>
+</.bx_data_table>
 
 <.modal :if={@live_action in [:new, :edit]} id="student-modal" show on_cancel={JS.patch(~p"/students")}>
   <.live_component
