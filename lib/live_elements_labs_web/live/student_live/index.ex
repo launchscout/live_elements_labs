@@ -5,7 +5,7 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
   alias LiveElementsLabs.Students.Student
 
   use LiveElements.CustomElementsHelpers
-  custom_element :bx_data_table, events: ["bx-table-header-cell-sort"]
+  custom_element(:bx_data_table, events: ["bx-table-header-cell-sort"])
 
   @default_sort [asc: :last_name]
 
@@ -48,6 +48,38 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
     {:ok, _} = Students.delete_student(student)
 
     {:noreply, assign(socket, :students, Students.list_students())}
+  end
+
+  def handle_event(
+        "bx-table-header-cell-sort",
+        %{
+          "columnId" => column,
+          "sortDirection" => direction
+        },
+        socket
+      ) do
+    sort = build_sort(column, direction)
+    {:noreply, socket |> assign(:sort, sort) |> assign(:students, Students.list_students(sort))}
+  end
+
+  defp build_sort(column, "ascending"), do: [asc: String.to_existing_atom(column)]
+  defp build_sort(column, "descending"), do: [desc: String.to_existing_atom(column)]
+  defp build_sort(column, "none"), do: nil
+
+  def sort_direction(column, asc: sort_column) do
+    if String.to_existing_atom(column) == sort_column do
+      "ascending"
+    else
+      "none"
+    end
+  end
+
+  def sort_direction(column, desc: sort_column) do
+    if String.to_existing_atom(column) == sort_column do
+      "descending"
+    else
+      "none"
+    end
   end
 
   def sort_direction(_, _), do: "none"

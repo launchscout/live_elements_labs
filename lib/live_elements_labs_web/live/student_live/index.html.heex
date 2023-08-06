@@ -11,9 +11,9 @@
   <bx-table>
     <bx-table-head>
       <bx-table-header-row>
-        <bx-table-header-cell sort-direction="none" data-column-id="email">Email</bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("email", @sort)} data-column-id="email">Email</bx-table-header-cell>
         <bx-table-header-cell sort-direction={sort_direction("first_name", @sort)} data-column-id="first_name">First Name</bx-table-header-cell>
-        <bx-table-header-cell sort-direction="none" data-column-id="last_name">Last Name</bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("last_name", @sort)} data-column-id="last_name">Last Name</bx-table-header-cell>
       </bx-table-header-row>
     </bx-table-head>
     <bx-table-body>
