@@ -22,7 +22,16 @@ defmodule LiveElementsLabs.Students do
   end
 
   def list_students(sort) do
-    (from s in Student, order_by: ^sort) |> Repo.all()
+    from(s in Student, order_by: ^sort) |> Repo.all()
+  end
+
+  def paginate_students(order_by: order_by, limit: limit, offset: offset) do
+    count = Repo.aggregate(Student, :count)
+
+    students =
+      from(s in Student, order_by: ^order_by, limit: ^limit, offset: ^offset) |> Repo.all()
+
+    {count, students}
   end
 
   @doc """

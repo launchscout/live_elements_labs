@@ -50,7 +50,9 @@ defmodule LiveElementsLabs.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:live_elements, ">= 0.0.0"}
+      {:live_elements, ">= 0.0.0"},
+      {:ex_machina, "~> 2.7.0"},
+      {:faker, ">= 0.0.0"}
     ]
   end
 
