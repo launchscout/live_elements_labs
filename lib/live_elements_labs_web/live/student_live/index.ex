@@ -7,13 +7,23 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
   use LiveElements.CustomElementsHelpers
   custom_element(:bx_data_table, events: ["bx-table-header-cell-sort"])
   custom_element(:bx_pagination, events: ["bx-pagination-changed-current"])
+  custom_element(:pie_chart, events: [])
 
   @default_sort [asc: :last_name]
 
   @impl true
   def mount(_params, _session, socket) do
     {count, students} = Students.paginate_students(order_by: @default_sort, limit: 10, offset: 0)
-    {:ok, socket |> assign(%{students: students, student_count: count, sort: @default_sort, offset: 0})}
+
+    {:ok,
+     socket
+     |> assign(%{
+       students: students,
+       student_count: count,
+       sort: @default_sort,
+       offset: 0,
+       chart_data: Students.experience_levels()
+     })}
   end
 
   @impl true
@@ -40,11 +50,13 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
   end
 
   @impl true
-  def handle_info({LiveElementsLabsWeb.StudentLive.FormComponent, {:saved, _student}}, %{assigns: %{sort: sort, offset: offset}} = socket) do
+  def handle_info(
+        {LiveElementsLabsWeb.StudentLive.FormComponent, {:saved, _student}},
+        %{assigns: %{sort: sort, offset: offset}} = socket
+      ) do
     {count, students} = Students.paginate_students(order_by: sort, limit: 10, offset: offset)
 
-    {:noreply,
-     socket |> assign(%{students: students, student_count: count})}
+    {:noreply, socket |> assign(%{students: students, student_count: count})}
   end
 
   @impl true

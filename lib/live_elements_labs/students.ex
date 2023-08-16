@@ -34,6 +34,11 @@ defmodule LiveElementsLabs.Students do
     {count, students}
   end
 
+  def experience_levels() do
+    query = from s in Student, group_by: s.experience_level, select: {s.experience_level, count(s.id)}
+    Repo.all(query) |> Enum.into(%{})
+  end
+
   @doc """
   Gets a single student.
 

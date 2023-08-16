@@ -8,7 +8,8 @@ defmodule LiveElementsLabs.Factory do
     %Student{
       first_name: Faker.Person.En.first_name(),
       last_name: Faker.Person.En.last_name(),
-      email: Faker.Internet.email()
+      email: Faker.Internet.email(),
+      experience_level: Enum.random([:beginner, :intermediate, :expert])
     }
   end
 end

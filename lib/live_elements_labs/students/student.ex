@@ -6,6 +6,7 @@ defmodule LiveElementsLabs.Students.Student do
     field :email, :string
     field :first_name, :string
     field :last_name, :string
+    field :experience_level, Ecto.Enum, values: [:beginner, :intermediate, :expert]
 
     timestamps()
   end

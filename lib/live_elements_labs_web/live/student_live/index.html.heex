@@ -7,6 +7,7 @@
   </:actions>
 </.header>
 
+<.pie_chart chart-data={@chart_data} label="Experience Levels"></.pie_chart>
 <.bx_data_table id="datable">
   <bx-table>
     <bx-table-head>
@@ -19,7 +20,7 @@
     <bx-table-body>
       <%= for student <- @students do %>
       <bx-table-row>
-        <bx-table-cell><%= student.email %></bx-table-cell>
+        <bx-table-cell><.link href={~p"/students/#{student.id}"}><%= student.email %></.link></bx-table-cell>
         <bx-table-cell><%= student.first_name %></bx-table-cell>
         <bx-table-cell><%= student.last_name %></bx-table-cell>
       </bx-table-row>

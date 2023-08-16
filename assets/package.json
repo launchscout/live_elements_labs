@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@carbon/web-components": "^1.30.0",
+    "chart.js": "^4.3.3",
+    "lit": "^2.8.0",
     "phoenix-custom-event-hook": "^0.0.6"
   }
 }
