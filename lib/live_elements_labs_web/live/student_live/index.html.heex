@@ -12,9 +12,18 @@
   <bx-table>
     <bx-table-head>
       <bx-table-header-row>
-        <bx-table-header-cell sort-direction={sort_direction("email", @sort)} data-column-id="email">Email</bx-table-header-cell>
-        <bx-table-header-cell sort-direction={sort_direction("first_name", @sort)} data-column-id="first_name">First Name</bx-table-header-cell>
-        <bx-table-header-cell sort-direction={sort_direction("last_name", @sort)} data-column-id="last_name">Last Name</bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("email", @sort)} data-column-id="email">
+          Email
+        </bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("first_name", @sort)} data-column-id="first_name">
+          First Name
+        </bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("last_name", @sort)} data-column-id="last_name">
+          Last Name
+        </bx-table-header-cell>
+        <bx-table-header-cell sort-direction={sort_direction("experience_level", @sort)} data-column-id="experience_level">
+          Experience Level
+        </bx-table-header-cell>
       </bx-table-header-row>
     </bx-table-head>
     <bx-table-body>
@@ -23,6 +32,7 @@
         <bx-table-cell><.link href={~p"/students/#{student.id}"}><%= student.email %></.link></bx-table-cell>
         <bx-table-cell><%= student.first_name %></bx-table-cell>
         <bx-table-cell><%= student.last_name %></bx-table-cell>
+        <bx-table-cell><%= student.experience_level %></bx-table-cell>
       </bx-table-row>
       <% end %>
     </bx-table-body>
