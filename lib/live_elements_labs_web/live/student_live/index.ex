@@ -22,7 +22,7 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
        student_count: count,
        sort: @default_sort,
        offset: 0,
-       chart_data: Students.experience_levels()
+       chart_data: Students.count_by_experience_levels()
      })}
   end
 

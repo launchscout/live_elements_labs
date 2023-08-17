@@ -34,7 +34,14 @@ defmodule LiveElementsLabs.Students do
     {count, students}
   end
 
+  @doc """
+  Returns list of possible experience levels
+  """
   def experience_levels() do
+    Ecto.Enum.values(Student, :experience_level)
+  end
+
+  def count_by_experience_levels() do
     query = from s in Student, group_by: s.experience_level, select: {s.experience_level, count(s.id)}
     Repo.all(query) |> Enum.into(%{})
   end

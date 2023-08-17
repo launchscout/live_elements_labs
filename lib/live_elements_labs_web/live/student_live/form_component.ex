@@ -22,7 +22,7 @@ defmodule LiveElementsLabsWeb.StudentLive.FormComponent do
         <.input field={@form[:first_name]} type="text" label="First name" />
         <.input field={@form[:last_name]} type="text" label="Last name" />
         <.input field={@form[:email]} type="text" label="Email" />
-        <.input field={@form[:experience_level]} type="select" label="Experience Level" options={[:beginner, :intermediate, :expert]} />
+        <.input field={@form[:experience_level]} type="select" label="Experience Level" options={Students.experience_levels()} />
         <:actions>
           <.button phx-disable-with="Saving...">Save Student</.button>
         </:actions>

@@ -10,6 +10,12 @@ defmodule LiveElementsLabs.StudentsTest do
 
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
+  describe "experience_levels/0" do
+    test "lists the experience levels possible" do
+      assert Students.experience_levels() == [:beginner, :intermediate, :expert]
+    end
+  end
+
   describe "list_students" do
     test "list_students/0 returns all students" do
       student = student_fixture()
