@@ -3,30 +3,18 @@ defmodule LiveElementsLabsWeb.StudentLive.FormComponent do
 
   alias LiveElementsLabs.Students
 
+  use LiveElements.CustomElementsHelpers
+  custom_element(:instacrud_form, events: ["save"])
+
   @impl true
   def render(assigns) do
     ~H"""
     <div>
       <.header>
         <%= @title %>
-        <:subtitle>Use this form to manage student records in your database.</:subtitle>
       </.header>
 
-      <.simple_form
-        for={@form}
-        id="student-form"
-        phx-target={@myself}
-        phx-change="validate"
-        phx-submit="save"
-      >
-        <.input field={@form[:first_name]} type="text" label="First name" />
-        <.input field={@form[:last_name]} type="text" label="Last name" />
-        <.input field={@form[:email]} type="text" label="Email" />
-        <.input field={@form[:experience_level]} type="select" label="Experience Level" options={[:beginner, :intermediate, :expert]} />
-        <:actions>
-          <.button phx-disable-with="Saving...">Save Student</.button>
-        </:actions>
-      </.simple_form>
+      <.instacrud_form id="student-form" phx-target={@myself} fields={@form_fields}></.instacrud_form>
     </div>
     """
   end
@@ -34,10 +22,12 @@ defmodule LiveElementsLabsWeb.StudentLive.FormComponent do
   @impl true
   def update(%{student: student} = assigns, socket) do
     changeset = Students.change_student(student)
+    form_fields = Students.form_fields()
 
     {:ok,
      socket
      |> assign(assigns)
+     |> assign(:form_fields, form_fields)
      |> assign_form(changeset)}
   end
 

@@ -35,8 +35,28 @@ defmodule LiveElementsLabs.Students do
   end
 
   def experience_levels() do
-    query = from s in Student, group_by: s.experience_level, select: {s.experience_level, count(s.id)}
+    query =
+      from s in Student, group_by: s.experience_level, select: {s.experience_level, count(s.id)}
+
     Repo.all(query) |> Enum.into(%{})
+  end
+
+  def form_fields() do
+    Student.__schema__(:fields)
+    |> Enum.filter(&editable_field?/1)
+    |> Enum.map(&form_field/1)
+  end
+
+  defp editable_field?(field) do
+    !(field in [:id, :inserted_at, :updated_at])
+  end
+
+  defp form_field(field) do
+    case Student.__schema__(:type, field) do
+      {:parameterized, Ecto.Enum, %{mappings: mappings}} ->
+        %{name: field, type: "select", values: Keyword.keys(mappings)}
+      type -> %{name: field, type: type}
+    end
   end
 
   @doc """
