@@ -14,7 +14,7 @@ defmodule LiveElementsLabs.Students.Student do
   @doc false
   def changeset(student, attrs) do
     student
-    |> cast(attrs, [:first_name, :last_name, :email])
-    |> validate_required([:first_name, :last_name, :email])
+    |> cast(attrs, [:first_name, :last_name, :email, :experience_level])
+    |> validate_required([:first_name, :last_name, :email, :experience_level])
   end
 end

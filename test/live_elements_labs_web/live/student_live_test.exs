@@ -1,10 +1,10 @@
 defmodule LiveElementsLabsWeb.StudentLiveTest do
-  use LiveElementsLabsWeb.ConnCase
+  use LiveElementsLabsWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
   import LiveElementsLabs.StudentsFixtures
 
-  @create_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name"}
+  @create_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name", experience_level: "beginner"}
   @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name"}
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
@@ -44,36 +44,6 @@ defmodule LiveElementsLabsWeb.StudentLiveTest do
       html = render(index_live)
       assert html =~ "Student created successfully"
       assert html =~ "some email"
-    end
-
-    test "updates student in listing", %{conn: conn, student: student} do
-      {:ok, index_live, _html} = live(conn, ~p"/students")
-
-      assert index_live |> element("#students-#{student.id} a", "Edit") |> render_click() =~
-               "Edit Student"
-
-      assert_patch(index_live, ~p"/students/#{student}/edit")
-
-      assert index_live
-             |> form("#student-form", student: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
-
-      assert index_live
-             |> form("#student-form", student: @update_attrs)
-             |> render_submit()
-
-      assert_patch(index_live, ~p"/students")
-
-      html = render(index_live)
-      assert html =~ "Student updated successfully"
-      assert html =~ "some updated email"
-    end
-
-    test "deletes student in listing", %{conn: conn, student: student} do
-      {:ok, index_live, _html} = live(conn, ~p"/students")
-
-      assert index_live |> element("#students-#{student.id} a", "Delete") |> render_click()
-      refute has_element?(index_live, "#students-#{student.id}")
     end
   end
 

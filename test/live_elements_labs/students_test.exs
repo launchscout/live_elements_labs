@@ -48,7 +48,8 @@ defmodule LiveElementsLabs.StudentsTest do
     valid_attrs = %{
       email: "some email",
       first_name: "some first_name",
-      last_name: "some last_name"
+      last_name: "some last_name",
+      experience_level: "beginner"
     }
 
     assert {:ok, %Student{} = student} = Students.create_student(valid_attrs)
