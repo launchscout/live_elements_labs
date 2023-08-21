@@ -16,5 +16,6 @@ defmodule LiveElementsLabs.Students.Student do
     student
     |> cast(attrs, [:first_name, :last_name, :email, :experience_level])
     |> validate_required([:first_name, :last_name, :email, :experience_level])
+    |> unique_constraint(:email)
   end
 end

@@ -3,6 +3,7 @@ defmodule LiveElementsLabsWeb.StudentFormChannelTest do
   use LiveElementsLabsWeb.ChannelCase
 
   alias LiveElementsLabs.Students
+  import LiveElementsLabs.Factory
 
   setup do
     {:ok, _, socket} =
@@ -22,6 +23,17 @@ defmodule LiveElementsLabsWeb.StudentFormChannelTest do
     })
     assert_state %{status: :complete}
     assert [%Student{email: "bob@example.com"}] = Students.list_students()
+  end
+
+  test "register with existing email", %{socket: socket} do
+    insert(:student, email: "bob@example.com")
+    send_event(socket, "register", %{
+      "email" => "bob@example.com",
+      "first_name" => "Bob",
+      "last_name" => "Smith",
+      "experience_level" => "intermediate"
+    })
+    assert_state %{errors: %{email: "has already been taken"}}
   end
 
   defp send_event(socket, event, payload) do

@@ -9,12 +9,15 @@ import { liveState, liveStateConfig } from 'phx-live-state';
   },
   topic: 'student_form',
   url: 'ws://localhost:4000/socket',
-  properties: ['status']
+  properties: ['status', 'errors'],
 })
 export class StudentFormElement extends LitElement {
 
   @state()
   status: string = '';
+
+  @state()
+  errors: Object = {};
 
   render() {
     if (this.status === 'complete') {
@@ -25,14 +28,17 @@ export class StudentFormElement extends LitElement {
           <div>
             <label>First Name</label>
             <input name="first_name" type="text" />
+            ${this.errorMessage('first_name')}
           </div>
           <div>
             <label>Last Name</label>
             <input name="last_name" type="text" />
+            ${this.errorMessage('last_name')}
           </div>
           <div>
             <label>Email</label>
             <input name="email" type="email" />
+            ${this.errorMessage('email')}
           </div>
           <div>
             <label>Experience Level</label>
@@ -41,10 +47,19 @@ export class StudentFormElement extends LitElement {
               <option value="intermediate">Intermediate</option>
               <option value="expert">Expert</option>
             </select>
+            ${this.errorMessage('experience_level')}
           </div>
           <button type="submit">Register</button>
         </form>
       `;
+    }
+  }
+
+  errorMessage(field) {
+    if (this.errors && this.errors[field]) {
+      return html`<div class="error">${this.errors[field]}</div>`;
+    } else {
+      return html``;
     }
   }
 

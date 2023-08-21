@@ -68,6 +68,16 @@ defmodule LiveElementsLabs.StudentsTest do
     assert {:error, %Ecto.Changeset{}} = Students.create_student(@invalid_attrs)
   end
 
+  test "duplicate email returns error" do
+    insert(:student, email: "bill@example.com")
+    assert {:error, %Ecto.Changeset{}} = Students.create_student(%{
+      first_name: "Bill",
+      last_name: "Jones",
+      experience_level: :beginner,
+      email: "bill@example.com"
+    })
+  end
+
   test "update_student/2 with valid data updates the student" do
     student = student_fixture()
 
