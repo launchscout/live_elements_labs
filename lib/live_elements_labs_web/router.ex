@@ -18,6 +18,7 @@ defmodule LiveElementsLabsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/student_form", PageController, :student_form
     live "/students", StudentLive.Index, :index
     live "/students/new", StudentLive.Index, :new
     live "/students/:id/edit", StudentLive.Index, :edit

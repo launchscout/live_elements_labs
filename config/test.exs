@@ -18,7 +18,7 @@ config :live_elements_labs, LiveElementsLabs.Repo,
 config :live_elements_labs, LiveElementsLabsWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "4972o4lRUSB7Pk4bko1Skw4igen9P1UU2xJOIX8FiiVr2x8dFONArcXnByQOi5ax",
-  server: false
+  server: true
 
 # In test we don't send emails.
 config :live_elements_labs, LiveElementsLabs.Mailer, adapter: Swoosh.Adapters.Test
@@ -31,3 +31,10 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :wallaby,
+  otp_app: :live_elements_labs,
+  base_url: "http://localhost:4002",
+  chromedriver: [
+    headless: false
+  ]
