@@ -25,10 +25,10 @@ defmodule LiveElementsLabsWeb.StudentFormChannelTest do
   end
 
   defp send_event(socket, event, payload) do
-    push(socket, "lvs:" <> event, payload)
+    push(socket, "lvs_evt:" <> event, payload)
   end
 
   defp assert_state(state) do
-    assert_push "state:change", ^state
+    assert_push "state:change", %{state: ^state}
   end
 end
