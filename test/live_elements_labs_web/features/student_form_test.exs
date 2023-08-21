@@ -10,11 +10,12 @@ defmodule LiveElementsLabsWeb.Features.StudentFormTest do
     |> visit("/student_form")
     |> find(css("student-form"))
     |> shadow_root()
-    |> fill_in(text_field("first_name"), with: "Bob")
-    |> fill_in(text_field("last_name"), with: "Jones")
-    |> fill_in(text_field("email"), with: "bobjones@example.com")
-    |> click(option("beginner"))
-    |> click(css("button", text: "Sign Up"))
-    |> assert_has(css("div", text: "Thanks"))
+    |> fill_in(css("input[name='first_name']"), with: "Bob")
+    |> fill_in(css("input[name='last_name']"), with: "Bob")
+    |> fill_in(css("input[name='email']"), with: "bob@example.com")
+    |> click(css("select[name='experience_level']"))
+    |> click(css("option[value='expert']"))
+    |> click(css("button", text: "Register"))
+    |> assert_has(css("p", text: "Thank you"))
   end
 end

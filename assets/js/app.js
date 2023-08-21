@@ -44,3 +44,4 @@ import '@carbon/web-components/es/components/data-table/index.js';
 import '@carbon/web-components/es/components/pagination/index.js';
 import './pie-chart.js';
 import './hello-world.js';
+import './student-form.js';
