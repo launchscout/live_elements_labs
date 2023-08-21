@@ -54,6 +54,7 @@ defmodule LiveElementsLabs.MixProject do
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
+      {:live_state, ">=0.0.0"},
       {:wallaby, ">= 0.0.0",
        git: "https://github.com/launchscout/wallaby.git",
        branch: "shadow-dom",
