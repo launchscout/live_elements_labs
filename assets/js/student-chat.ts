@@ -43,16 +43,17 @@ export class StudentChatElement extends LitElement {
     return html`
     <button @click=${this.openDialog}>Chat with instructor</button>
     <dialog>
-    ${this.channel_id ? html`
-      <ul>
-        ${this.messages.map(message => html`<li>${message.from}: ${message.content}</li>`)}
-      </ul>
-      <label>Message: <input name="message"></label>
-      <button @click=${this.sendMessage}>Send Message</button>
-    ` : html `
-      <label>Name:<input name="name" /></label>
-      <button @click=${this.startChat}>Start Chat</button>
-    `}
+      <div><a href="#" @click=${() => this.dialog!.close()}>X</a></div>
+      ${this.channel_id ? html`
+        <ul>
+          ${this.messages.map(message => html`<li>${message.from}: ${message.content}</li>`)}
+        </ul>
+        <label>Message: <input name="message"></label>
+        <button @click=${this.sendMessage}>Send Message</button>
+      ` : html `
+        <label>Name:<input name="name" /></label>
+        <button @click=${this.startChat}>Start Chat</button>
+      `}
     </dialog>
     `;
   }
