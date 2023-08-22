@@ -8,7 +8,9 @@
 import Config
 
 config :live_elements_labs,
-  ecto_repos: [LiveElementsLabs.Repo]
+  ecto_repos: [LiveElementsLabs.Repo],
+  guild_id: 553656304154050563,
+  bot_id: 1009927559217168384
 
 # Configures the endpoint
 config :live_elements_labs, LiveElementsLabsWeb.Endpoint,
@@ -64,6 +66,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :nostrum,
+  token: System.get_env("DISCORD_BOT_TOKEN"),
+  gateway_intents: :all
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

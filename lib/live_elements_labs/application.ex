@@ -17,7 +17,8 @@ defmodule LiveElementsLabs.Application do
       # Start Finch
       {Finch, name: LiveElementsLabs.Finch},
       # Start the Endpoint (http/https)
-      LiveElementsLabsWeb.Endpoint
+      LiveElementsLabsWeb.Endpoint,
+      LiveElementsLabs.ChatBotConsumer
       # Start a worker by calling: LiveElementsLabs.Worker.start_link(arg)
       # {LiveElementsLabs.Worker, arg}
     ]

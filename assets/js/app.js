@@ -45,3 +45,4 @@ import '@carbon/web-components/es/components/pagination/index.js';
 import './pie-chart.js';
 import './hello-world.js';
 import './student-form.js';
+import './student-chat.js';

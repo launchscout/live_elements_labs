@@ -1,2 +1,3 @@
 import { StudentFormElement } from "./student-form";
-export { StudentFormElement };
+import { StudentChatElement } from "./student-chat";
+export { StudentFormElement, StudentChatElement };
