@@ -55,6 +55,7 @@ defmodule LiveElementsLabs.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:live_state, ">=0.0.0"},
+      {:cors_plug, ">= 0.0.0"},
       {:wallaby, ">= 0.0.0",
        git: "https://github.com/launchscout/wallaby.git",
        branch: "shadow-dom",
