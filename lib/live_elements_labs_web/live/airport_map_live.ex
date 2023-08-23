@@ -13,24 +13,12 @@ defmodule LiveElementsLabsWeb.AirportMapLive do
   end
 
   @impl true
-  def handle_event(
-        "bounds_changed",
-        %{"north" => north, "east" => east, "west" => west, "south" => south},
-        socket
-      ) do
-    airports =
-      Airports.list_airports_in_bounds(%{north: north, east: east, west: west, south: south})
-
-    {:noreply, socket |> assign(airports: airports)}
-  end
+  def handle_event("bounds_changed", event_payload, socket), do: load_airports(event_payload, socket)
 
   @impl true
-  def handle_event(
-        "tilesloaded",
-        %{"north" => north, "east" => east, "west" => west, "south" => south},
-        socket
-      ) do
-    IO.inspect("in tiles loaded")
+  def handle_event("tilesloaded", event_payload, socket), do: load_airports(event_payload, socket)
+
+  defp load_airports(%{"north" => north, "east" => east, "west" => west, "south" => south}, socket) do
     airports =
       Airports.list_airports_in_bounds(%{north: north, east: east, west: west, south: south})
 
