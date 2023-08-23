@@ -1,0 +1,9 @@
+<div class="map">
+  <.lit_google_map id="the_map" api-key={@api_key} version="3.46">
+    <%= for %{geo_location: %Geo.Point{coordinates: {lng, lat}}, name: name, ident: ident} <- @airports do %>
+      <lit-google-map-marker slot="markers" latitude={lat} longitude={lng}>
+        <p><%= name %> (<%= ident %>)</p>
+      </lit-google-map-marker>
+    <% end %>
+  </.lit_google_map>
+</div>

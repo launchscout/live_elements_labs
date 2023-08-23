@@ -9,8 +9,12 @@ import Config
 
 config :live_elements_labs,
   ecto_repos: [LiveElementsLabs.Repo],
-  guild_id: 553656304154050563,
-  bot_id: 1009927559217168384
+  guild_id: 553_656_304_154_050_563,
+  bot_id: 1_009_927_559_217_168_384
+
+config :live_elements_labs, LiveElementsLabs.Repo,
+  types: LiveElementsLabs.PostgresTypes,
+  extensions: [{Geo.PostGIS.Extension, library: Geo}]
 
 # Configures the endpoint
 config :live_elements_labs, LiveElementsLabsWeb.Endpoint,
