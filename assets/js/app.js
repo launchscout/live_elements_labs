@@ -44,6 +44,6 @@ window.liveSocket = liveSocket
 // import '@carbon/web-components/es/components/pagination/index.js';
 // import 'lit-google-map';
 // import './pie-chart.js';
-// import './hello-world.js';
+import './hello-world.js';
 // import './student-form.js';
 // import './student-chat.js';
