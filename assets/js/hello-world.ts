@@ -18,6 +18,7 @@ export class HelloWorldElement extends LitElement {
   }
 
   changeLanguage(event) {
+    this.dispatchEvent(new CustomEvent('change-language', {detail: {language: event.target.value}}))
     console.log(event.target.value);
   }
 }
