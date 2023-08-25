@@ -1,5 +1,5 @@
 <h1>You should say hello</h1>
 
-<hello-world id="hello_world" greeting={@greeting} phx-hook="PhoenixCustomEventHook" phx-send-events="change-language">
-  Earth
-</hello-world>
+<hello-world id="hello_world" greeting={@greeting}>Earth</hello-world>
+
+<change-language id="change-language" greetings={Jason.encode!(@greetings)} phx-hook="PhoenixCustomEventHook" phx-send-events="change-language"></change-language>

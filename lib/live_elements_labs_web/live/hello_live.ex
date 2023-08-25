@@ -4,12 +4,14 @@ defmodule LiveElementsLabsWeb.HelloLive do
   @greetings %{
     "French" => "Bonjour",
     "German" => "Wie geht's",
-    "English" => "Hello"
+    "English" => "Hello",
+    "Japanese" => "Konichiwa",
+    "Spanish" => "Hola"
   }
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:greeting, "Hello")}
+    {:ok, socket |> assign(:greeting, "Hello") |> assign(:greetings, @greetings)}
   end
 
   @impl true

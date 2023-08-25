@@ -7,18 +7,13 @@ export class HelloWorldElement extends LitElement {
   @property()
   greeting: string = '';
 
+  @property({type: Object})
+  greetings: Object;
+
   render() {
     return html`
       ${this.greeting} <slot></slot>
-      <select @change=${this.changeLanguage} name="language">
-        <option>German</option>
-        <option>French</option>
-      </select>
     `
   }
 
-  changeLanguage(event) {
-    this.dispatchEvent(new CustomEvent('change-language', {detail: {language: event.target.value}}))
-    console.log(event.target.value);
-  }
 }

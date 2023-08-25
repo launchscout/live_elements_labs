@@ -45,5 +45,6 @@ window.liveSocket = liveSocket
 // import 'lit-google-map';
 // import './pie-chart.js';
 import './hello-world.js';
+import './change-language.js';
 // import './student-form.js';
 // import './student-chat.js';
