@@ -76,6 +76,6 @@ export class StudentChatElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'student-chat': studentChatElement
+    'student-chat': StudentChatElement
   }
 }
