@@ -1,6 +1,10 @@
 defmodule LiveElementsLabsWeb.HelloLive do
   use LiveElementsLabsWeb, :live_view
 
+  use LiveElements.CustomElementsHelpers
+
+  custom_element :change_language, events: ["change-language"]
+
   @greetings %{
     "French" => "Bonjour",
     "German" => "Wie geht's",
