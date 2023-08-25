@@ -6,8 +6,6 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
 
   use LiveElements.CustomElementsHelpers
   custom_element(:bx_data_table, events: ["bx-table-header-cell-sort"])
-  custom_element(:bx_pagination, events: ["bx-pagination-changed-current"])
-  custom_element(:pie_chart, events: [])
 
   @default_sort [asc: :last_name]
 
@@ -78,15 +76,6 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
     sort = build_sort(column, direction)
     {count, students} = Students.paginate_students(order_by: sort, limit: 10, offset: offset)
     {:noreply, socket |> assign(%{students: students, student_count: count, sort: sort})}
-  end
-
-  def handle_event(
-        "bx-pagination-changed-current",
-        %{"start" => offset},
-        %{assigns: %{sort: sort}} = socket
-      ) do
-    {count, students} = Students.paginate_students(order_by: sort, limit: 10, offset: offset)
-    {:noreply, socket |> assign(%{students: students, student_count: count, offset: offset})}
   end
 
   defp build_sort(column, "ascending"), do: [asc: String.to_existing_atom(column)]

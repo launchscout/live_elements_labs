@@ -7,7 +7,6 @@
   </:actions>
 </.header>
 
-<.pie_chart chart-data={@chart_data} label="Experience Levels"></.pie_chart>
 <.bx_data_table id="datable">
   <bx-table>
     <bx-table-head>
@@ -38,7 +37,6 @@
     </bx-table-body>
   </bx-table>
 </.bx_data_table>
-<.bx_pagination total={@student_count}></.bx_pagination>
 <.modal :if={@live_action in [:new, :edit]} id="student-modal" show on_cancel={JS.patch(~p"/students")}>
   <.live_component
     module={LiveElementsLabsWeb.StudentLive.FormComponent}
