@@ -49,3 +49,9 @@ defmodule LiveElementsLabs.Airports.Airport do
     ])
   end
 end
+
+defimpl Jason.Encoder, for: LiveElementsLabs.Airports.Airport do
+  def encode(%{geo_location: %Geo.Point{coordinates: {lng, lat}}, name: name, ident: ident}, opts) do
+    Jason.Encode.map(%{name: name, identifier: ident, latitude: lat, longitude: lng}, opts)
+  end
+end

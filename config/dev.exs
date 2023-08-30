@@ -26,6 +26,7 @@ config :live_elements_labs, LiveElementsLabsWeb.Endpoint,
   secret_key_base: "IsTkrz0W38rOsbcKA0SmkF0VfsihbpV+BXvlUNJFoitDYVOmFTFWEar7u1H4vjRh",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    esbuild_custom_elements: {Esbuild, :install_and_run, [:custom_elements, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
