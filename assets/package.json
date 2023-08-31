@@ -3,8 +3,11 @@
     "@carbon/web-components": "^1.30.0",
     "chart.js": "^4.3.3",
     "lit": "^2.8.0",
+    "lit-google-map": "github:launchscout/lit-google-map",
     "phoenix-custom-event-hook": "^0.0.6",
-    "phx-live-state": "^0.9.4",
-    "lit-google-map": "github:launchscout/lit-google-map"
+    "phx-live-state": "^0.10.1"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.8.4"
   }
 }

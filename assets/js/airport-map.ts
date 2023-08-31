@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property, query, state } from 'lit/decorators.js'
-import { liveState } from 'phx-live-state';
+import { liveState, liveStateConfig, liveStateProperty } from 'phx-live-state';
 import 'lit-google-map';
 
 type Airport = {
@@ -13,8 +13,6 @@ type Airport = {
 @customElement('airport-map')
 @liveState({
   topic: 'airport_map',
-  url: 'ws://localhost:4000/socket',
-  properties: ['airports'],
   events: {
     send: ['tilesloaded', 'bounds_changed']
   }
@@ -24,7 +22,12 @@ export class AirportMapElement extends LitElement {
   @property({attribute: 'api-key'})
   apiKey: string = '';
 
+  @liveStateConfig('url')
+  @property()
+  url: string = '';
+
   @state()
+  @liveStateProperty()
   airports: Array<Airport> = [];
 
   render() {
