@@ -1,0 +1,396 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "js/app.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "js/custom_elements.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HelloWorldElement",
+          "declaration": {
+            "name": "HelloWorldElement",
+            "module": "js/custom_elements.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "js/hello-world.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HelloWorldElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "greeting",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "greeting"
+            },
+            {
+              "kind": "method",
+              "name": "changeLanguage",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "change-language",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "greeting",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "greeting"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hello-world",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HelloWorldElement",
+          "declaration": {
+            "name": "HelloWorldElement",
+            "module": "js/hello-world.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "hello-world",
+          "declaration": {
+            "name": "HelloWorldElement",
+            "module": "js/hello-world.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "js/pie-chart.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PieChartElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "chartData",
+              "type": {
+                "text": "{}"
+              },
+              "attribute": "chart-data"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "chart",
+              "type": {
+                "text": "Chart<\"pie\">"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "chartContainer",
+              "type": {
+                "text": "HTMLCanvasElement"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "chart-data",
+              "type": {
+                "text": "{}"
+              },
+              "fieldName": "chartData"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pie-chart",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PieChartElement",
+          "declaration": {
+            "name": "PieChartElement",
+            "module": "js/pie-chart.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pie-chart",
+          "declaration": {
+            "name": "PieChartElement",
+            "module": "js/pie-chart.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "js/student-chat.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "StudentChatElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "messages",
+              "type": {
+                "text": "Array<ChatMessage>"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "channel_id",
+              "type": {
+                "text": "Number | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "nameInput",
+              "type": {
+                "text": "HTMLInputElement | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "messageInput",
+              "type": {
+                "text": "HTMLInputElement | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dialog",
+              "type": {
+                "text": "HTMLDialogElement | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openDialog"
+            },
+            {
+              "kind": "method",
+              "name": "startChat"
+            },
+            {
+              "kind": "method",
+              "name": "sendMessage"
+            }
+          ],
+          "events": [
+            {
+              "name": "start_chat",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "new_message",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "url"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "student-chat",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "StudentChatElement",
+          "declaration": {
+            "name": "StudentChatElement",
+            "module": "js/student-chat.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "student-chat",
+          "declaration": {
+            "name": "StudentChatElement",
+            "module": "js/student-chat.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "js/student-form.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "StudentFormElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "errors",
+              "type": {
+                "text": "Object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "method",
+              "name": "errorMessage",
+              "parameters": [
+                {
+                  "name": "field"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "submit",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "register",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "student-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "StudentFormElement",
+          "declaration": {
+            "name": "StudentFormElement",
+            "module": "js/student-form.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "student-form",
+          "declaration": {
+            "name": "StudentFormElement",
+            "module": "js/student-form.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "vendor/topbar.js",
+      "declarations": [],
+      "exports": []
+    }
+  ]
+}
