@@ -7,7 +7,6 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
   use LiveElements.CustomElementsHelpers
   custom_element(:bx_data_table, events: ["bx-table-header-cell-sort"])
   custom_element(:bx_pagination, events: ["bx-pagination-changed-current"])
-  custom_element(:pie_chart, events: [])
 
   @default_sort [asc: :last_name]
 
@@ -21,8 +20,7 @@ defmodule LiveElementsLabsWeb.StudentLive.Index do
        students: students,
        student_count: count,
        sort: @default_sort,
-       offset: 0,
-       chart_data: Students.count_by_experience_levels()
+       offset: 0
      })}
   end
 
