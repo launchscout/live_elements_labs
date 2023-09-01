@@ -53,6 +53,13 @@ defmodule LiveElementsLabs.Airports do
   """
   def get_airport!(id), do: Repo.get!(Airport, id)
 
+  def locate_airport_by_indentifier(ident) do
+    with %{geo_location: %Geo.Point{coordinates: {lng, lat}}} <-
+           Repo.get_by(Airport, ident: ident) do
+      %{lng: lng, lat: lat}
+    end
+  end
+
   @doc """
   Creates a airport.
 
