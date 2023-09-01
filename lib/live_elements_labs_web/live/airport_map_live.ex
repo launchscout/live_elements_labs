@@ -20,6 +20,12 @@ defmodule LiveElementsLabsWeb.AirportMapLive do
   end
 
   @impl true
+  def handle_event("choose_airport", %{"ident" => ident}, socket) do
+    %{lng: lng, lat: lat} = Airports.locate_airport_by_indentifier(ident)
+    {:noreply, assign(socket, %{center_lat: lat, center_lng: lng})}
+  end
+
+  @impl true
   def handle_event("bounds_changed", event_payload, socket),
     do: load_airports(event_payload, socket)
 

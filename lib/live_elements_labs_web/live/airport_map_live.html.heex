@@ -1,3 +1,10 @@
+<form phx-submit="choose_airport">
+  <div>
+    <label>Idenitifier</label>
+    <input name="ident" />
+    <button type="submit">Go!</button>
+  </div>
+</form>
 <div class="map">
   <.lit_google_map id="the_map" api-key={@api_key} version="3.46" center-latitude={@center_lat} center-longitude={@center_lng} set-center>
     <%= for %{geo_location: %Geo.Point{coordinates: {lng, lat}}, name: name, ident: ident} <- @airports do %>
