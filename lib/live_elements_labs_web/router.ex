@@ -27,6 +27,8 @@ defmodule LiveElementsLabsWeb.Router do
     live "/students/:id/show/edit", StudentLive.Show, :edit
     live "/hello", HelloLive
     live "/airports", AirportMapLive
+
+    live "/react", ReactDemoLive
   end
 
   # Other scopes may use custom stacks.

@@ -23,8 +23,34 @@ import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 import PhoenixCustomEventHook from 'phoenix-custom-event-hook';
 
+import { mount } from "./mount"
+import { ReactDemo } from "./react-demo"
+
+ReactDemoHook = {
+  mounted() {
+    this.unmountComponent = mount(this.el.id, this.opts())
+  },
+
+  destroyed() {
+    if (!this.unmountComponent) {
+      console.error("ReactDemoRoot component not set")
+      return;
+    }
+
+    this.unmountComponent()
+  },
+
+  opts() {
+    return {}
+  }
+}
+
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: {PhoenixCustomEventHook}})
+let liveSocket = new LiveSocket("/live", Socket, {
+  params: {_csrf_token: csrfToken},
+  hooks: {PhoenixCustomEventHook, ReactDemoHook}
+})
 
 // Show progress bar on live navigation and form submits
 topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
@@ -47,3 +73,4 @@ window.liveSocket = liveSocket
 // import './hello-world.js';
 // import './student-form.js';
 // import './student-chat.js';
+import "./react-demo.jsx";

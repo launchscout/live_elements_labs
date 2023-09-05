@@ -1,0 +1,20 @@
+<h1 class={"text-#{@current_color}-500 text-2xl font-bold"}>React Demo Live</h1>
+
+<p>
+Possible colors include <span class="text-red-500">red</span>, <span
+  class="text-blue-500">blue</span>, <span class="text-green-500">green</span>,
+and <span class="text-purple-500">purple</span>.
+</p>
+
+<div class="my-16 flex flex-wrap space-x-2">
+  <.button phx-click="change-color" phx-value-color="red">Make it Red</.button>
+  <.button phx-click="change-color" phx-value-color="blue">Make it Blue</.button>
+  <.button phx-click="change-color" phx-value-color="green">Make it Green</.button>
+  <.button phx-click="change-color" phx-value-color="purple">Make it Purple</.button>
+</div>
+
+<div
+  id="react-demo-root"
+  phx-hook="ReactDemoHook"
+  phx-update="ignore"
+></div>
