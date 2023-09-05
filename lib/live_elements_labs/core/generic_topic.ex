@@ -1,11 +1,11 @@
-defmodule GenericTopic do
+defmodule LiveElementsLabs.GenericTopic do
   @moduledoc """
   Basic Pub/Sub functionality
 
   Use like this:
 
   defmodule MyApp.SomeContext.Topic do
-    use GenericTopic, default_topic: "bison"
+    use LiveElementsLabs.GenericTopic, default_topic: "bison"
   end
   """
 
