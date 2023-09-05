@@ -9,6 +9,7 @@ defmodule LiveElementsLabsWeb.UserSocket do
   ## Channels
 
   channel "hello_world", LiveElementsLabsWeb.HelloChannel
+  channel "student_form", LiveElementsLabsWeb.StudentFormChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
